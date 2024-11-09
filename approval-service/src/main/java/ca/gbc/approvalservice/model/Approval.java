@@ -22,8 +22,8 @@ public class Approval {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-generate ID
     private Long id;
 
-    private String eventId;    // ID of the associated event
-    private String approver;   // Person who approves/rejects
-    private String status;     // e.g., "Pending", "Approved", "Rejected"
-    private String notes;      // Any additional comments from the approver
+    private String eventId;
+    private String approver;
+    private String status;
+    private String notes;
 }

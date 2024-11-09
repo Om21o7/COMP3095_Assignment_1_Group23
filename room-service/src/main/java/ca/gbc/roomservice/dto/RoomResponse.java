@@ -4,6 +4,6 @@ public record RoomResponse(
         Long id,
         String roomName,
         int capacity,
-        String features, // e.g., projector, whiteboard
+        String features,
         boolean availability
 ) {}

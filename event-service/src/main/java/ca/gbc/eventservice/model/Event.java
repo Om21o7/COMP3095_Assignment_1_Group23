@@ -8,19 +8,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Document(collection = "events") // Ensure this matches your MongoDB collection name
+@Document(collection = "events")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class Event {
     @Id
-    private String id; // Use String for MongoDB ID
+    private String id;
 
     private String BookingId;
     private String name;
     private String description;
-    private String organizer; // Reference to the user who is organizing the event
-    private String date; // Format: YYYY-MM-DD
-    private String location; // Where the event is being held
+    private String organizer;
+    private String date;
+    private String location;
 }

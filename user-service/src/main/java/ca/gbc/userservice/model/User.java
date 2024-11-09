@@ -11,7 +11,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "users") // Ensure this matches your database table name
+@Table(name = "users")
 @Data
 @Builder
 @NoArgsConstructor
@@ -21,14 +21,14 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Unique identifier for the user (primary key)
+    private Long id;
 
-    private String username; // The username of the user (used for login, etc.)
-    private String password; // The password (hashed, never store plain text passwords)
+    private String username;
+    private String password;
 
-    private String email; // The user's email address
+    private String email;
 
-    private String role; // The role of the user (e.g., "faculty", "student", etc.)
+    private String role;
 
-    private String userType; // The type of user (e.g., "student", "faculty", etc.)
+    private String userType;
 }

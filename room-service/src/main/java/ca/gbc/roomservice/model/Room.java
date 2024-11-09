@@ -19,7 +19,7 @@ public class Room {
 
     private String roomName;
     private int capacity;
-    private String features; // e.g., projector, whiteboard
+    private String features;
     private boolean availability;
 
 }

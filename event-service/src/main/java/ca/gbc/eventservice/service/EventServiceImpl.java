@@ -30,7 +30,7 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public String createEvent(EventRequest eventRequest) {
-        // Step 1: Check if the booking ID is valid (exists)
+
         String bookingId = eventRequest.BookingId();
         Boolean exists =restTemplate.getForObject(bookingServiceUrl + bookingId, Boolean.class);
 
@@ -54,25 +54,25 @@ public class EventServiceImpl implements EventService {
 
 
     private boolean isOrganizerAuthorized(String organizerId, String eventLocation) {
-        // Call UserService to get the role of the organizer by email (assuming organizerId is the email)
+
         String url = userServiceUrl + "role/" + organizerId;  // Use the endpoint we created earlier
         try {
-            // Assuming UserService returns a role string like "faculty", "student", etc.
+
             String role = restTemplate.getForObject(url, String.class);
 
-            // Faculty can create events with any location
+
             assert role != null;
             if (role.equals("faculty")) {
                 return true;
             }
 
-            // Students can only create events if the location is "George Brown College"
+
             return role.equals("student") && eventLocation.equalsIgnoreCase("George Brown College");
 
-            // If the role is neither faculty nor student or the location is invalid for students
+
         } catch (Exception e) {
             log.error("Error checking organizer role for email: " + organizerId, e);
-            return false; // Return false if there's an error or the role cannot be determined
+            return false;
         }
     }
 
@@ -107,12 +107,12 @@ public class EventServiceImpl implements EventService {
         Optional<Event> eventOptional = eventRepository.findById(id);
         if (eventOptional.isPresent()) {
             Event event = eventOptional.get();
-            event.setDate(newDate);  // Update the date of the event
+            event.setDate(newDate);
             eventRepository.save(event);
         }
     }
 
-    // Helper methods to map between entities and DTOs
+
 
     private EventResponse mapToEventResponse(Event event) {
         return new EventResponse(

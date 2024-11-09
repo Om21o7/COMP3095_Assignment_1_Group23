@@ -25,7 +25,7 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public BookingResponse createBooking(BookingRequest bookingRequest) {
-        // Check room availability
+
         String roomServiceUrl = "http://room-service:9001/api/rooms/availability/" + bookingRequest.roomId();
         Boolean isAvailable = restTemplate.getForObject(roomServiceUrl, Boolean.class);
 
@@ -33,7 +33,7 @@ public class BookingServiceImpl implements BookingService {
             throw new IllegalStateException("Room is not available for booking.");
         }
 
-        // Create and save booking
+
         Booking booking = new Booking();
         booking.setRoomId(bookingRequest.roomId());
         booking.setUserName(bookingRequest.userName());
@@ -41,7 +41,7 @@ public class BookingServiceImpl implements BookingService {
         booking.setEndTime(bookingRequest.endTime());
 
         Booking savedBooking = bookingRepository.save(booking);
-        // Update room availability
+
         updateRoomAvailability(bookingRequest.roomId(), false);
 
         return new BookingResponse(

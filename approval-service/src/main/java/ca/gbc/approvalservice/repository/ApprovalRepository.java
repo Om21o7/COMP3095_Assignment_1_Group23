@@ -9,5 +9,5 @@ public interface ApprovalRepository extends JpaRepository<Approval, Long> {
 
 
 
-    // Additional query methods can be defined here if needed
+
 }
